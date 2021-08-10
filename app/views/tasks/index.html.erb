@@ -1,0 +1,10 @@
+<h1>My Tasks</h1>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li><input <%= task.completed == true ? "checked" : "" %> disabled type="checkbox" id="completed" name="completed"> <%= link_to task.title, task_path(task.id) %> <%= link_to 'Destroy',  { controller: "tasks", action: "destroy", id: task.id },
+            data: {:confirm => 'Are you sure?'}, method: :delete %></li><br>
+  <% end %>
+</ul>
+
+<%= link_to  "Create new task", new_task_path %>
